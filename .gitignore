@@ -33,3 +33,8 @@ tests/*/*.php
 tests/*/*.exp
 tests/*/*.log
 tests/*/*.sh
+.idea
+cmake-build-debug
+CMakeLists.txt
+local_test.php
+superchain-*.tgz

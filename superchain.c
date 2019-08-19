@@ -1,4 +1,14 @@
-/* superchain extension for PHP */
+/*
+  +----------------------------------------------------------------------+
+  | SuperChain Extension                                                 |
+  +----------------------------------------------------------------------+
+  | Copyright (c) 2018-2019 The Mofei                                    |
+  +----------------------------------------------------------------------+
+  | https://www.mofei.org                                                |
+  +----------------------------------------------------------------------+
+  | Author: mofei <masterscao@gmail.com>                                 |
+  +----------------------------------------------------------------------+
+*/
 
 #ifdef HAVE_CONFIG_H
 # include "config.h"
@@ -17,11 +27,11 @@
 
 /* {{{ void superchain_test1()
  */
-PHP_FUNCTION(superchain_test1)
+PHP_FUNCTION(superchain_version)
 {
 	ZEND_PARSE_PARAMETERS_NONE();
 
-	php_printf("The extension %s is loaded and working!\r\n", "superchain");
+	php_printf("Extension Version %s\r\n", PHP_SUPERCHAIN_VERSION);
 }
 /* }}} */
 
@@ -61,14 +71,17 @@ PHP_RINIT_FUNCTION(superchain)
 PHP_MINFO_FUNCTION(superchain)
 {
 	php_info_print_table_start();
-	php_info_print_table_header(2, "superchain support", "enabled");
+	php_info_print_table_header(2, "Superchain Support", "enabled");
+#if defined(PHP_SUPERCHAIN_VERSION)
+    php_info_print_table_row(2, "Extension Version", PHP_SUPERCHAIN_VERSION);
+#endif
 	php_info_print_table_end();
 }
 /* }}} */
 
 /* {{{ arginfo
  */
-ZEND_BEGIN_ARG_INFO(arginfo_superchain_test1, 0)
+ZEND_BEGIN_ARG_INFO(arginfo_superchain_version, 0)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_INFO(arginfo_superchain_test2, 0)
@@ -79,7 +92,7 @@ ZEND_END_ARG_INFO()
 /* {{{ superchain_functions[]
  */
 static const zend_function_entry superchain_functions[] = {
-	PHP_FE(superchain_test1,		arginfo_superchain_test1)
+	PHP_FE(superchain_version,		arginfo_superchain_version)
 	PHP_FE(superchain_test2,		arginfo_superchain_test2)
 	PHP_FE_END
 };
