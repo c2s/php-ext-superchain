@@ -1,0 +1,7 @@
+ARG_ENABLE('superchain', 'superchain support', 'no');
+
+if (PHP_SUPERCHAIN != 'no') {
+	AC_DEFINE('HAVE_SUPERCHAIN', 1, 'superchain support enabled');
+
+	EXTENSION('superchain', 'superchain.c', null, '/DZEND_ENABLE_STATIC_TSRMLS_CACHE=1');
+}
